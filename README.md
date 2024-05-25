@@ -11,9 +11,11 @@ Appsmith_ provides a Low-Code application platform exactly for this purpose.
 During my research of Low Code / No Code (LCNC) development, I created an app with the guideline from @kubowania via freecodecamp.
 
 ##### You can visit the application using the below link
-Under Development
+[Application](https://app.appsmith.com/app/order-application/zip-food-delivery-664dc905d8dfb212590a1908)
+
 
 ## Corrections
+### List2 Widget
 The link to the application that @kubowania provides point to an invalid resource on Appsmith_.
 This is normal since the tutorial was published around two years ago and the platform has undergo a great deal of transformation.
 
@@ -28,7 +30,32 @@ In the add_modal, the code for __List2__ UI element which fetches the products t
         }
     );
 }}
-``` 
+```
+
+### add_order Query
+`customer_select.selectedOptionValue` returns the full name and we need the user's ID. Thus we need something like this:
+```javascript
+{
+	"Order Id" : {{this.params.id}},
+	"Date" : {{moment().format("YYYY-MM-DD")}},
+	"Delivery Address" : {{address_input.text}},
+	"Total Amount" : {{amount_input.text}},
+	"Status" : {{status_input.selectedOptionValue}},
+	"Stripe Purchase Id" : {{stripe_input.text}},
+	"Customer Id" : {{fetch_all_users.data.reduce((targetId, currentValue) => {
+		if(currentValue["First Name"] + " " + currentValue["Last Name"] === customer_select.selectedOptionValue){
+			targetId = currentValue.Id;
+		}
+		return targetId;
+	},0);
+	}}
+}
+```
+
+### Disclaimer
+As I followed this tutorial for understanding what Low Code No Code approach is, I decided to stop following the tutorial further as something are not the same and it takes some time to debug and move forward.
+
+That being said, I am deploying the app despite its incompleteness.
 
 #### Find The Tutorial Here
 [Low-Code for Freelance Developers & Startups – Tutorial](https://www.youtube.com/watch?v=hDzgO2FB_ms)
