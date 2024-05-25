@@ -53,7 +53,7 @@ In the add_modal, the code for __List2__ UI element which fetches the products t
 ```
 
 ### Disclaimer
-As I followed this tutorial for understanding what Low Code No Code approach is, I decided to stop following the tutorial further as something are not the same and it takes some time to debug and move forward.
+I followed this tutorial for understanding what Low Code No Code approach is. It seems that the platform has changed a little bit and some old syntax is not working. Thus, I decided to stop following the tutorial further as it takes enough time to debug and move forward.
 
 That being said, I am deploying the app despite its incompleteness.
 
